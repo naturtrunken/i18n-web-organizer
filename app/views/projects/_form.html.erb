@@ -15,6 +15,15 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </div>
+  <div class="field">
+    <%= f.label :default_language %><br />
+    <%=
+     localized_language_select(
+      'project',
+      :default_language
+     )
+    %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
