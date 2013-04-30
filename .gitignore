@@ -11,6 +11,10 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+log
+
+# JetBrains RubyMine workspace data
+.idea
 
 # YARD artifacts
 .yardoc
