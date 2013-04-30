@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'sqlite3'
+gem 'localized_language_select', :git => 'git://github.com/stepahn/localized_language_select.git'
+gem 'jquery-rails'
+gem 'debugger'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -16,5 +19,3 @@ group :test do
   gem 'factory_girl_rails'
 end
 
-gem 'jquery-rails'
-gem 'debugger'
