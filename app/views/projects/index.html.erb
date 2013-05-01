@@ -14,8 +14,7 @@
   <tr>
     <td><%= @current_properties['name'] %></td>
     <td><%= link_to 'Translations', project_translations_path(project) %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Attention: You are going to delete only the database entry for this project - This WILL NOT delete any file on your computer. Are you sure that you will delete this project here?' } %></td>
   </tr>
 <% end %>
 </table>

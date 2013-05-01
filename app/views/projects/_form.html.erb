@@ -12,12 +12,18 @@
   <% end %>
 
 
+
   <div class="field">
-    <%= f.label :directory %><br />
+    The directory in which your project is stored.<br />
     <%= f.text_field :directory %>
   </div>
 
   <hr/>
+
+  <ul>
+   <li>Please note, that if in the directory above already a file <i>.i18n-web-organizer</i> still does exists, the project settings on this page will not be saved. Instead, the old settings will be used.</li>
+   <li>You can use this to "import" a project translation.</li>
+  </ul>
 
   <div class="field">
     Name<br />

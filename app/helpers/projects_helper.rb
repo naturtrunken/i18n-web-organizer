@@ -10,6 +10,9 @@ module ProjectsHelper
     raise 'The directory does not exist.' unless File.directory?(directory)
     raise 'Can not write in the directory.' unless File.writable?(directory)
 
+    # Does a configuration file still exists? If this is so, we won't change anything.
+    return if File.exists?(directory + '.i18n-web-organizer')
+
     # Create the initial configuration hash.
     config = {
       :name => project_name,
