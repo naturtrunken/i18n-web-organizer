@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
 
+  include ProjectsHelper
+
   # ---------------------------------------------------------------------------------------
   def index
     @projects = Project.all
@@ -42,6 +44,11 @@ class ProjectsController < ApplicationController
   # ---------------------------------------------------------------------------------------
   def create
     @project = Project.new(params[:project])
+#    create_initial_config_file!(
+#     params[:project][:directory],
+#     params[:project][:name],
+#     params[:project][:default_language]
+#    )
 
     respond_to do |format|
       if @project.save
