@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Default language</th>
     <th></th>
     <th></th>
     <th></th>
@@ -11,13 +10,10 @@
   </tr>
 
 <% @projects.each do |project| %>
+  <% @current_properties = @project_properties.pop %>
   <tr>
-    <td><%= project.name %></td>
-    <% if project.default_language then %>
-    <td><%= t('languages.' + project.default_language) %></td>
-    <% end %>
+    <td><%= @current_properties['name'] %></td>
     <td><%= link_to 'Translations', project_translations_path(project) %></td>
-    <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
     <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>

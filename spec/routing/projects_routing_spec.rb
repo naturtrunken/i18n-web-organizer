@@ -11,10 +11,6 @@ describe ProjectsController do
       get("/projects/new").should route_to("projects#new")
     end
 
-    it "routes to #show" do
-      get("/projects/1").should route_to("projects#show", :id => "1")
-    end
-
     it "routes to #edit" do
       get("/projects/1/edit").should route_to("projects#edit", :id => "1")
     end

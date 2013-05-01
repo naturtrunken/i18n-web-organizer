@@ -11,20 +11,29 @@
     </div>
   <% end %>
 
+
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :directory %><br />
+    <%= f.text_field :directory %>
   </div>
-    <div class="field">
-      <%= f.label :directory %><br />
-      <%= f.text_field :directory %>
-    </div>
+
+  <hr/>
+
   <div class="field">
-    <%= f.label :default_language %><br />
+    Name<br />
+    <%=
+     text_field_tag(
+      'project_property[name]',
+      ''
+     )
+    %>
+  </div>
+  <div class="field">
+    Default language<br />
     <%=
      localized_language_select(
-      'project',
-      :default_language
+      'project_property',
+      'default_language'
      )
     %>
   </div>

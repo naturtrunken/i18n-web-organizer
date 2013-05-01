@@ -5,21 +5,10 @@ class ProjectsController < ApplicationController
   # ---------------------------------------------------------------------------------------
   def index
     @projects = Project.all
+    @project_properties = get_project_properties(@projects)
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @projects }
-    end
-  end
-
-
-  # ---------------------------------------------------------------------------------------
-  def show
-    @project = Project.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @project }
     end
   end
 
@@ -30,7 +19,6 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @project }
     end
   end
 
@@ -43,20 +31,22 @@ class ProjectsController < ApplicationController
 
   # ---------------------------------------------------------------------------------------
   def create
+    # Normalize
+    params[:project][:directory] = params[:project][:directory] + '/' unless params[:project][:directory][-1] == '/'
+
     @project = Project.new(params[:project])
-#    create_initial_config_file!(
-#     params[:project][:directory],
-#     params[:project][:name],
-#     params[:project][:default_language]
-#    )
+
+    create_initial_config_file!(
+     params[:project][:directory],
+     params[:project_property][:name],
+     params[:project_property][:default_language]
+    )
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.json { render json: @project, status: :created, location: @project }
+        format.html { redirect_to projects_path, notice: 'Project was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -68,11 +58,9 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        format.html { redirect_to @project, notice: 'Project was successfully updated.' }
-        format.json { head :no_content }
+        format.html { redirect_to projects_path, notice: 'Project was successfully updated.' }
       else
         format.html { render action: "edit" }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -85,7 +73,6 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to projects_url }
-      format.json { head :no_content }
     end
   end
 

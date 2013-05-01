@@ -42,14 +42,6 @@ describe ProjectsController do
     end
   end
 
-  describe "GET show" do
-    it "assigns the requested project as @project" do
-      project = Project.create! valid_attributes
-      get :show, {:id => project.to_param}, valid_session
-      assigns(:project).should eq(project)
-    end
-  end
-
   describe "GET new" do
     it "assigns a new project as @project" do
       get :new, {}, valid_session
