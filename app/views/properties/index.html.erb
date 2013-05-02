@@ -1,0 +1,26 @@
+<%= form_tag(:controller => "properties", :action =>"update", :id => @project) do |f| %>
+
+<div class="field">
+  Name<br />
+  <%=
+      text_field_tag(
+              'property[name]',
+              @project_property[:name]
+      )
+  %>
+</div>
+<div class="field">
+  Default language<br />
+  <%=
+      localized_language_select(
+              'property',
+              'default_language',
+              [@project_property[:default_language]]
+      )
+  %>
+</div>
+<div class="actions">
+  <%= submit_tag 'Save' %>
+</div>
+
+<% end %>

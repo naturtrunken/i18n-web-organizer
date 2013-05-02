@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   # ---------------------------------------------------------------------------------------
   def index
     @projects = Project.all
-    @project_properties = get_project_properties(@projects)
+    @project_properties = get_projects_properties(@projects)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,12 +31,6 @@ class ProjectsController < ApplicationController
     end
 
     @project = Project.new(params[:project])
-
-    create_initial_config_file!(
-     params[:project][:directory],
-     params[:project_property][:name],
-     params[:project_property][:default_language]
-    )
 
     respond_to do |format|
       if @project.save
