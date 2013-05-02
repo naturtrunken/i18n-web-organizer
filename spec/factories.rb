@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
  factory :project do |p|
-  directory '/tmp'
+  directory '/tmp/'
  end
 
 end

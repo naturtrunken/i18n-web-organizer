@@ -1,7 +1,8 @@
 class TranslationsController < ApplicationController
 
   include TranslationsHelper
-  before_filter :get_project!
+  include ProjectsHelper
+  before_filter :get_project_and_properties!
 
   # ---------------------------------------------------------------------------------------
   def index
