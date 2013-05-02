@@ -23,4 +23,14 @@ describe PropertiesController do
 
   end
 
+
+  # --------------------------------------------------------------------------------------
+  describe "POST #add_language" do
+   before { post :add_language, :project_id => @project.id, :language => 'es', :format => 'json' }
+
+   it 'should return a JSON 200' do
+     response.body.should == [200].to_json
+   end
+  end
+
 end

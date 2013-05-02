@@ -5,6 +5,7 @@ gem 'sqlite3'
 gem 'localized_language_select', :git => 'git://github.com/stepahn/localized_language_select.git'
 gem 'jquery-rails'
 gem 'debugger'
+gem 'capybara', '1.1.2'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -17,5 +18,6 @@ group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 

@@ -44,7 +44,8 @@ module ProjectsHelper
       # but we can only write placeholder informations now.
       return {
           :name => '(Unknown)',
-          :default_language => ''
+          :default_language => '',
+          :languages => []
       }
 
     end
@@ -54,7 +55,8 @@ module ProjectsHelper
 
     return {
         :name => file_properties[:name],
-        :default_language => file_properties[:default_language]
+        :default_language => file_properties[:default_language],
+        :languages => file_properties[:languages]
     }
   end
 

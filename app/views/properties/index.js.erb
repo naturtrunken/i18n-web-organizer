@@ -1,0 +1,27 @@
+// Adds a new language.
+// ---------------------------------------------------------------------------------------
+function add_language() {
+
+    $.post(
+            "<%= update_project_properties_path(@project.id, :json) %>",
+            {
+                'language': document.getElementById("project_properties_language").value
+            },
+            function (data) {
+
+                if (!data) {
+                    alert("Oops... A server error is occured. Please try it again later.");
+                    return;
+                }
+
+                if (data[0] == "200") {
+
+                    $('#project_properties_languages').append('<li id="project_properties_language-' + document.getElementById("project_properties_language").value + '">' + document.getElementById("project_properties_language").value + '</li>');
+
+                } else {
+                    alert("Oops... The server send an invalid response. The message was NOT sent. Please try it again later.");
+                }
+            }
+    );
+
+}

@@ -21,5 +21,14 @@ describe PropertiesController do
       )
     end
 
+    it "route to #add_language" do
+      { :post => '/projects/' + @project.id.to_s + '/properties/add_language' }.should route_to(
+        :controller => "properties",
+        :project_id => @project.id.to_s,
+        :action => "add_language"
+      )
+    end
+
+
   end
 end

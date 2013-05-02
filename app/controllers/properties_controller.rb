@@ -8,6 +8,7 @@ class PropertiesController < ApplicationController
   def index
     respond_to do |format|
       format.html # index.html.erb
+      format.js # index.js.erb
     end
   end
 
@@ -23,6 +24,29 @@ class PropertiesController < ApplicationController
 
     # And redirect.
     redirect_to projects_path
+  end
+
+
+  # ---------------------------------------------------------------------------------------
+  def add_language
+
+    # Check the parameter
+    unless params[:language] then
+      json_response([422])
+      return
+    end
+
+    unless I18n.t('language.' + params[:language]) then
+      json_response([422])
+      return
+    end
+
+    # OK, add the new language now to the list and update the config file.
+    @project_property[:languages] = [] unless @project_property[:languages]
+    @project_property[:languages].push(params[:language])
+    update_config(@project, @project_property)
+
+    json_response([200])
   end
 
 end
