@@ -22,7 +22,7 @@ group :development, :test do
 
   # Debugger for 1.9.x
   gem 'debugger'
-  gem 'binding_of_caller'
+#  gem 'binding_of_caller'
 
   # Model annotation
   gem 'annotate'

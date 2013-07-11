@@ -13,5 +13,13 @@ describe TranslationsController do
       )
     end
 
+    it "route to #load" do
+      {:get => '/projects/' + @project.id.to_s + '/load' }.should route_to(
+                                                                              :controller => "translations",
+                                                                              :project_id => @project.id.to_s,
+                                                                              :action => "load"
+                                                                          )
+    end
+
   end
 end
