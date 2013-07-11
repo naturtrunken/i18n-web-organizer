@@ -1,23 +1,58 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
-gem 'sqlite3'
-gem 'localized_language_select', :git => 'git://github.com/stepahn/localized_language_select.git'
-gem 'jquery-rails'
-gem 'debugger'
-gem 'capybara', '1.1.2'
+# Framework
+ gem 'rails', '3.2.13'
 
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'therubyracer', :platforms => :ruby
-  gem 'uglifier', '>= 1.0.3'
+# JQuery
+gem 'jquery-rails'
+
+# SCSS handling for CSS files
+gem 'sass-rails'
+
+# JS and CSS minifier.
+gem 'uglifier'
+
+# Language listings
+gem 'localized_language_select', :git => 'git://github.com/stepahn/localized_language_select.git'
+
+
+group :development, :test do
+  # DB
+  gem 'sqlite3'
+
+  # Debugger for 1.9.x
+  gem 'debugger'
+  gem 'binding_of_caller'
+
+  # Model annotation
+  gem 'annotate'
+
+  # Better error views.
+  gem "better_errors"
+
+  # Analyzer for redundant activerecord queries.
+  gem "bullet"
 end
 
+
 group :test do
+
+  # Test framework
   gem 'rspec'
   gem 'rspec-rails'
+  gem 'cucumber-rails', :require => false
+  gem 'capybara', '1.1.2'
+
+  # For parallel testing on all cpu cores.
+  gem "parallel_tests"
+
+  # Factory for creating testing object
   gem 'factory_girl_rails'
+
+  # Generates code coverage statistics.
+  gem 'simplecov', :require => false
+
+  # Vacuum cleaner for the test database.
   gem 'database_cleaner'
 end
 
