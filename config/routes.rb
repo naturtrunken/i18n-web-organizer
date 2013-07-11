@@ -9,4 +9,6 @@ I18nWebOrganizer::Application.routes.draw do
   match 'projects/:project_id/properties'  => 'properties#update', via: :post
   match 'projects/:project_id/properties/add_language'  => 'properties#add_language', as: 'update_project_properties', via: :post
 
+  match 'projects/:project_id/translations/load'  => 'translations#load', via: :post, as: :load_project_translations
+
 end

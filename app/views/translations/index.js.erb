@@ -1,0 +1,37 @@
+// Loads the new translation data for the given configuration.
+// ---------------------------------------------------------------------------------------
+function load_translation_data() {
+
+    $.post(
+            "<%= load_project_translations_path(@project.id, :json) %>",
+            {
+                'directory': document.getElementById("translations_path").value
+            },
+            function (data) {
+
+                if (!data) {
+                    alert("Oops... A server error is occured. Please try it again later.");
+                    return;
+                }
+
+                if (data[0] == "200") {
+                    update_data(data);
+                } else {
+                    alert("Oops... The server send an invalid response. The message was NOT sent. Please try it again later.");
+                }
+            }
+    );
+
+}
+
+
+// Updates the view with the new translation data.
+// ---------------------------------------------------------------------------------------
+function update_data(data) {
+
+    // Create variables for readability.
+    var data_project_directory = data[1][0];
+
+    // Update the header
+    $('#translations_path-current').text(data_project_directory);
+}

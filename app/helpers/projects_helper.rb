@@ -10,6 +10,7 @@ module ProjectsHelper
 
     @project = Project.where('id = ?', params[:project_id]).first
     raise 'No such project does exists for the given :project_id in the URL.' unless @project
+    raise 'No such project directory does exists for the given :project_id: ' + @project.directory unless Dir.exists?(@project.directory)
 
     @project_property = get_project_properties(@project)
   end

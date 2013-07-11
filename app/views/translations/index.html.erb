@@ -1,1 +1,16 @@
-Translations index
+<h2 id="translations_path-current"><%= @translation_config[:current_path] %></h2>
+<%=
+    select(
+            "translations",
+            'path',
+            options_for_select(@translation_config[:available_paths], @translation_config[:current_path]),
+            :id => 'translations_path'
+    )
+%>
+<%=
+    button_to_function(
+            'Change',
+            'load_translation_data()',
+            :id => 'translations_path-change'
+    )
+%>

@@ -14,12 +14,13 @@ describe TranslationsController do
 
 
   # --------------------------------------------------------------------------------------
-  describe "GET #load" do
+  describe "POST #load" do
     before do
       create_project_directories(@project.directory, ['dir_a', 'dir_b'])
-      get :index,
+      post :load,
           :project_id => @project.id,
-          :dir => 'test'
+          :directory => 'test',
+          :format => 'json'
     end
 
     it 'should return JSON status 200' do

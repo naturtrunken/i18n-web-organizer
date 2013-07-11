@@ -6,19 +6,19 @@ describe TranslationsController do
     before { @project = FactoryGirl.create(:project) }
 
     it "route to #index" do
-      {:get => '/projects/' + @project.id.to_s + '/translations' }.should route_to(
-       :controller => "translations",
-       :project_id => @project.id.to_s,
-       :action => "index"
-      )
+      {:get => '/projects/' + @project.id.to_s + '/translations'}.should route_to(
+                                                                             :controller => "translations",
+                                                                             :project_id => @project.id.to_s,
+                                                                             :action => "index"
+                                                                         )
     end
 
     it "route to #load" do
-      {:get => '/projects/' + @project.id.to_s + '/load' }.should route_to(
-                                                                              :controller => "translations",
-                                                                              :project_id => @project.id.to_s,
-                                                                              :action => "load"
-                                                                          )
+      {:post => '/projects/' + @project.id.to_s + '/translations/load'}.should route_to(
+                                                                      :controller => "translations",
+                                                                      :project_id => @project.id.to_s,
+                                                                      :action => "load"
+                                                                  )
     end
 
   end
